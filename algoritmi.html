@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>atestat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style> 
+        body { 
+            background-color: #985A5A;
+        }
+        .header{
+           opacity: 0;
+           transform: translateY(2rem);
+           transition: opacity 2s ease-in-out;
+            margin-bottom: 2rem;
+        }
+        .is-visible {
+  opacity: 1;
+  transform: translateY(0rem);
+}
+        .header.is-visible{
+            transition: all 1s ease-in-out;
+            transform: translateY(0rem);
+            opacity: 1;
+        }
+        header{margin-bottom: 14rem;}
+        .navbarr {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+}
+
+/* NAVIGATION */
+nav {
+  width: 25%;
+  display: flex;
+  justify-content: flex-end;
+}
+nav img{
+  width: 2rem;
+  height: auto;
+}
+nav ul {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+nav ul li {
+  display: inline-block;
+  width: 80%;
+}
+nav ul li a {
+  display: block;
+  padding-bottom: 15px;
+  text-decoration: none;
+  color: #aaa;
+  font-weight: 800;
+  margin: 0 10px;
+}
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+nav ul li a:hover {
+  color: #555;
+}
+
+
+/* stroke */
+nav.stroke ul li a,
+nav.fill ul li a {
+  position: relative;
+}
+nav.stroke ul li a:after,
+nav.fill ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #ccff00;
+  height: 4px;
+}
+nav.stroke ul li a:hover:after {
+  width: 100%;
+}
+
+nav.fill ul li a {
+  transition: all 2s;
+}
+
+nav.fill ul li a:after {
+  text-align: left;
+  content: '.';
+  margin: 0;
+  opacity: 0;
+}
+nav.fill ul li a:hover {
+  color: #fff;
+  z-index: 1;
+}
+nav.fill ul li a:hover:after {
+  z-index: -10;
+  animation: fill 1s forwards;
+  -webkit-animation: fill 1s forwards;
+  -moz-animation: fill 1s forwards;
+  opacity: 1;
+}
+
+/* Keyframes */
+@keyframes fill {
+  0% {
+    width: 0%;
+    height: 1px;
+  }
+  50% {
+    width: 100%;
+    height: 1px;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    background: #333;
+  }
+}
+    </style>
+        
+        <div class="navbarr">
+            <a href="index.html" class="logo"><img src="images/logo.svg" alt="divide et impera"></a>
+            <nav class="stroke">
+              <ul>
+                <li><a href="index.html"><img src="images/nav-home.svg" alt=""></a></li>
+                <li><a href="implementare.html"><img src="images/nav-implementare.svg" alt=""></a></li>
+                <li><a href="algoritmi.html"><img src="images/nav-algorithm.svg" alt=""></a></li>
+                <li><a href="probleme.html"><img src="images/nav-search.svg" alt=""></a></li>
+                <li><a href="about.html"><img src="images/nav-about.svg" alt=""></a></li>
+              </ul>
+            </nav>
+        </div>
+        <header>
+           
+            <div class="header show-on-scroll">
+            <h1>Algoritmi</h1>
+            </div>
+        </header>
+        <main>
+            <div class="merge header show-on-scroll">
+                <div class="mergesort">
+                <h3>Mergesort</h3>
+                <p>Este o metodă eficientă de sortare a elementelor, bazată pe interclasarea jumătăților ordonate ale unui vector. 
+                        <br> <br>
+                    Complexitatea acestei metode este O(n*logn).</p>
+                </div>
+                    <div class="cod1">
+                        <img src="images/alg-merge.svg" alt="mergesort">
+                        <input type="text" value="void divide(int s,int d,int &m) 
+                        { m=(s+d)/2;}
+                        void inter(int s,int d,int m)
+                        {
+                            int i=s,j=m+1,k=1,v[100001];
+                            while(i<=m && j<=d)
+                                if(x[i]<x[j]) v[k++]=x[i++];
+                                else
+                                    v[k++]=x[j++];
+                            while(i<=m) v[k++]=x[i++];
+                            while(j<=d) v[k++]=x[j++];
+                            for(i=s,k=1;i<=d;i++,k++)
+                                x[i]=v[k];
+                        }
+                        void mrg(int s,int d)
+                        {
+                            int m;
+                            if(s<d)
+                            {
+                                divide(s,d,m);
+                                mrg(s,m);
+                                mrg(m+1,d);
+                                inter(s,d,m);
+                            }
+                        }" id="mrgsort">
+                        <button onclick="myFunction()" class="button copiaza">Copiază</button>
+                    </div>
+            </div>
+            <div class="quick header show-on-scroll">
+                <div class="cod2">
+                    <img src="images/alg-quick.svg" alt="quicksort">
+                    <input type="text" value="void schimb(int &a,int &b)
+                    {
+                        int aux=a;
+                        a=b;
+                        b=aux;
+                    }
+                    void quick(int s,int d)
+                    {
+                        int m,i,j;
+                        i=s;
+                        j=d;
+                        m=x[(s+d)/2];
+                        do{
+                            while(i<d && x[i]<m) i++;
+                            while(j>s && x[j]>m) j--;
+                               if(i<=j)
+                                {
+                                  schimb(x[i],x[j]);
+                                     i++;
+                                     j--;
+                                 }
+                              }while(i<=j);
+                        if(s<i) quick(s,j);
+                        if(i<d) quick(i,d);
+                    }" id="qcksort">
+                        <button onclick="myFunction1()" class="button copiaza">Copiază</button>
+                </div>
+                <div class="quicksort">
+                        <h3>Quicksort</h3>
+                        <p>Este de asemenea o metodă eficientă de sortare a unui vector. 
+                                <br><br>
+                            Se alege un pivot, se ordonează elementele listei, astfel încât toate elementele din stânga pivotului să fie mai mici sau egale cu acesta, iar toate elementele din dreapta să fie mai mari sau egale cu pivotul. Această procedură se repetă la stânga și la dreapta elementului ales.
+                            <br><br>
+                            Complexitatea algoritmului este O(nlogn) și O(n^2) în cel mai nefavorabil caz.
+                            </p>
+                </div>
+            </div>
+            <div class="cautare header show-on-scroll">
+                <div class="cautare-binara">
+                        <h3>Căutarea binară</h3>
+                        <p>Este cel mai eficient algoritm găsire a unui element într-un vector ordonat.  cu o complexitate de O(logn).
+                                <br><br>
+                            Se verifică la fiecare pas elementul din mijlocul unei porțiuni de vector, porțiune ce se micșorează la fiecare pas. Dacă elementul căutat este mai mic decat mijlocul, atunci căutăm la stânga, atlfel căutăm la dreapta. 
+                            <br><br>
+                            Complexitatea algoritmului este O(logn).</p>
+                </div>
+                <div class="cod3">
+                    <img src="images/alg-cautare.svg" alt="binary search">
+                    <input type="text" value="int caut(int p,int u,int v[],int x)
+                    {
+                        if(p>u)
+                            return 0;
+                        else
+                        {
+                            int m=p+(u-p)/2;
+                            if(v[m]==x)
+                                return m;
+                            if(v[m]>x)
+                                return caut(1,m-1,v,x);
+                            if(v[m]<x)
+                                return caut(m+1,u,v,x);
+                            return 0;
+                        }
+                    }" id="binary">
+                        <button onclick="myFunction2()" class="button copiaza">Copiază</button>
+                </div>
+            </div>
+        </main>
+        <div class="butonalg">
+            <button class="button button1" onclick="location.href='probleme.html'">Probleme</button>
+        </div>
+        <footer>
+            <p>Copyright © 2021 Adrian Berescu</p>
+        </footer>
+    
+        <script>
+            function myFunction() {
+              var copyText = document.getElementById("mrgsort");
+              copyText.select();
+              copyText.setSelectionRange(0, 99999)
+              document.execCommand("copy");
+              alert("Text copiat!");
+            }
+            function myFunction1() {
+              var copyText = document.getElementById("qcksort");
+              copyText.select();
+              copyText.setSelectionRange(0, 99999)
+              document.execCommand("copy");
+              alert("Text copiat!");
+            }
+            function myFunction2() {
+              var copyText = document.getElementById("binary");
+              copyText.select();
+              copyText.setSelectionRange(0, 99999)
+              document.execCommand("copy");
+              alert("Text copiat!");
+            }
+            // Detect request animation frame
+var scroll = window.requestAnimationFrame ||
+             // IE Fallback
+             function(callback){ window.setTimeout(callback, 1000/60)};
+var elementsToShow = document.querySelectorAll('.show-on-scroll'); 
+
+function loop() {
+
+    Array.prototype.forEach.call(elementsToShow, function(element){
+      if (isElementInViewport(element)) {
+        element.classList.add('is-visible');
+      } //else {
+        //element.classList.remove('is-visible');
+      //}
+    });
+
+    scroll(loop);
+}
+
+// Call the loop for the first time
+loop();
+
+// Helper function from: http://stackoverflow.com/a/7557433/274826
+function isElementInViewport(el) {
+ 
+  var rect = el.getBoundingClientRect();
+  return (
+    (rect.top <= 0
+      && rect.bottom >= 0)
+    ||
+    (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.top <= (window.innerHeight/2 || document.documentElement.clientHeight))
+    ||
+    (rect.top >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+  );
+}
+            </script>
+
+        
+        
+</body>
+
+</html>

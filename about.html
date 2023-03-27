@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>atestat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+         body{
+             background-color: #21201F;
+         }
+         h1{
+             margin-top: 10rem;
+             margin-left: 4rem;
+             font-size: 8rem;
+         }
+         body h3{
+             margin-left: 3.8rem;
+         }
+         main{
+             display: grid;
+             grid-template-columns: 1fr 1fr;
+             grid-template-rows: 1fr;
+             margin-top:30rem;
+             margin-bottom: 15rem;
+         }
+         section{
+             font-size: 1.5rem;
+             margin-left: 2rem;
+             color: #E8F2BD;
+             font-family: Comfortaa,sans-serif;
+             margin-bottom: 4rem;
+         }
+         .animatie {
+            font-size: 6.5rem;
+            margin-top: 8rem;
+            margin-left: 3rem;
+            color:#E8F2BD;
+            font-family: Comfortaa,sans-serif;
+         }
+         .header{
+             width: 58rem;
+         }
+         .type{
+             display: flex;
+             margin-top: 4rem;
+             margin-left:18rem;
+             
+         }
+         .type p{
+             font-size: 5.5rem;
+         }
+         @media(min-width: 1200px){
+             .type p{
+                 font-size: 6rem;
+             }
+         }
+         @media(max-width: 800px){
+             .type p{
+                 font-size: 4rem;
+             }
+             
+         }
+         @media(max-width: 500px){
+             .type p{
+                 font-size: 3rem;
+             }
+             
+         }
+         .txt-type > .txt {
+        border-right: 0.2rem solid #777;
+        }
+        .intro{
+            background: #18171B;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+            .intro-text {
+            color: #ccff00cb;
+            font-family: Comfortaa, sans-serif;
+            font-size: 8rem;
+            }
+        .slider {
+            background: #3B3B2C;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: translateY(100%);
+            }
+            main{
+                opacity: 0;
+                transition: opacity 1.5s ease-in-out;
+            }
+            main.is-visible{
+                transition: opacity 1.5s ease-in-out;
+            opacity: 1;
+        }
+        .header{
+          opacity: 0;
+          transition: opacity 3s 4.75s ease-in-out;
+        }
+        .header.is-visible{
+          opacity: 1;
+          transition: opacity 3s 4.75s ease-in-out;
+        }
+        .about-wow{
+            opacity: 0;
+            transition: opacity 3s 6.5s ease-in-out;
+        }
+        .about-wow.is-visible{
+            transition: opacity 3s 6.25s ease-in-out;
+            opacity: 1;
+        }
+        .intro-text span{
+            position: relative;
+            overflow: hidden;
+            display: block;
+        
+        }
+        .intro-text span::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: #3B3B2C;
+            animation: a-ltr-after 2s cubic-bezier(.77,0,.18,1) forwards;
+            transform: translateX(-101%);
+        }
+        .intro-text span::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background:  #18171B;
+            animation: a-ltr-before 2s cubic-bezier(.77,0,.18,1) forwards;
+            transform: translateX(0);
+        }
+        .intro-text span:nth-of-type(1)::before,
+        .intro-text span:nth-of-type(1)::after{
+            animation-delay: 1s;
+        }
+
+        .intro-text span:nth-of-type(2)::before,
+        .intro-text span:nth-of-type(2)::after{
+            animation-delay: 1.5s;
+        }
+
+        @keyframes a-ltr-after{
+            0% {transform: translateX(-100%)}
+            100% {transform: translateX(101%)}
+        }
+
+        @keyframes a-ltr-before{
+            0% {transform: translateX(0)}
+            100% {transform: translateX(200%)}
+        }
+        .scroll-fancy{
+            margin-top: 16rem;
+            margin-left: 55rem;
+        }
+        .scroll-fancy a{
+            color: #C8C8C8;
+            text-decoration: none;
+            letter-spacing: .1em;
+            font-family: Comfortaa, sans-serif;
+            display: inline-block;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  transition: opacity .3s;
+        }
+        .scroll-fancy a:hover{
+            opacity: .5;
+        }
+        #scrollFancy a{
+           padding-top: 4rem;
+        }
+        #scrollFancy a span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: sdb05 1.5s infinite;
+  animation: sdb05 1.5s infinite;
+  box-sizing: border-box;
+}
+@-webkit-keyframes sdb05 {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+@keyframes sdb05 {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+.navbarr {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+}
+
+/* NAVIGATION */
+nav {
+  width: 25%;
+  display: flex;
+  justify-content: flex-end;
+}
+nav img{
+  width: 2rem;
+  height: auto;
+}
+nav ul {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+nav ul li {
+  display: inline-block;
+  width: 80%;
+}
+nav ul li a {
+  display: block;
+  padding-bottom: 15px;
+  text-decoration: none;
+  color: #aaa;
+  font-weight: 800;
+  margin: 0 10px;
+}
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+nav ul li a:hover {
+  color: #555;
+}
+
+
+/* stroke */
+nav.stroke ul li a,
+nav.fill ul li a {
+  position: relative;
+}
+nav.stroke ul li a:after,
+nav.fill ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #ccff00;
+  height: 4px;
+}
+nav.stroke ul li a:hover:after {
+  width: 100%;
+}
+
+nav.fill ul li a {
+  transition: all 2s;
+}
+
+nav.fill ul li a:after {
+  text-align: left;
+  content: '.';
+  margin: 0;
+  opacity: 0;
+}
+nav.fill ul li a:hover {
+  color: #fff;
+  z-index: 1;
+}
+nav.fill ul li a:hover:after {
+  z-index: -10;
+  animation: fill 1s forwards;
+  -webkit-animation: fill 1s forwards;
+  -moz-animation: fill 1s forwards;
+  opacity: 1;
+}
+
+/* Keyframes */
+@keyframes fill {
+  0% {
+    width: 0%;
+    height: 1px;
+  }
+  50% {
+    width: 100%;
+    height: 1px;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    background: #333;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
+
+    </style>
+    <div class="navbarr">
+      <a href="index.html" class="logo"><img src="images/logo.svg" alt="divide et impera"></a>
+      <nav class="stroke">
+        <ul>
+          <li><a href="index.html"><img src="images/nav-home.svg" alt=""></a></li>
+          <li><a href="implementare.html"><img src="images/nav-implementare.svg" alt=""></a></li>
+          <li><a href="algoritmi.html"><img src="images/nav-algorithm.svg" alt=""></a></li>
+          <li><a href="probleme.html"><img src="images/nav-search.svg" alt=""></a></li>
+          <li><a href="about.html"><img src="images/nav-about.svg" alt=""></a></li>
+        </ul>
+      </nav>
+    </div>
+    
+    <div class="header show-on-scroll">
+        <h1>Despre mine.</h1>
+    </div>
+    <div class="about-wow show-on-scroll">
+    <div class="type"><p>sunt 
+        <span class="txt-type" data-wait="2000" data-words='["ambițios","creativ","teribil la gătit","original"]'></span>
+    </p></div>
+    </div>
+    <div id="scrollFancy" class="scroll-fancy">
+         <a href="#inf"><span></span>Scroll</a>
+    </div>
+    <div class="intro">
+        <div class="intro-text">
+           <span>Despre mine</span> 
+        </div>
+    </div>
+    
+    <div class="slider"></div>
+    <main id="inf" class="show-on-scroll">
+        <div class="fun-facts">
+            <div class="icon"><img src="images/about-name.svg" alt=""><p>Adrian Berescu</p></div>
+            <br>
+            <div class="icon"><img src="images/about-school.svg" alt=""> <p>Colegiul Național de Informatică Piatra Neamț</p></div>
+           <br>
+            <div class="icon"><img src="images/about-hobby.svg" alt=""> <p>Hobby-uri: jocuri video, muzică, ping pong</p></div>
+           <br>
+            
+            <div class="icon"><img src="images/about-pers.svg" alt=""><p>INTJ</p></div>
+        </div>
+         <div class="cntct">
+            <h3>Contact</h3>
+            <div class="contact">
+                <img src="images/about-mail.svg" alt="">
+                <p>berescu_adrian20@yahoo.com</p>
+            </div>
+        </div>
+    </main>
+    <section>Proiect pentru atestarea competențelor profesionale la informatică realizat cu îndrumarea domnului profesor coordonator Gheorghe Manolache.</section>
+    <footer>
+        <p>Copyright © 2021 Adrian Berescu</p>
+    </footer>
+    <script src="intro.js"></script>
+    <script>
+
+
+        var scroll = window.requestAnimationFrame ||
+             // IE Fallback
+             function(callback){ window.setTimeout(callback, 1000/60)};
+var elementsToShow = document.querySelectorAll('.show-on-scroll'); 
+
+function loop() {
+
+    Array.prototype.forEach.call(elementsToShow, function(element){
+      if (isElementInViewport(element)) {
+        element.classList.add('is-visible');
+      } //else {
+        //element.classList.remove('is-visible');
+      //}
+    });
+
+    scroll(loop);
+}
+
+// Call the loop for the first time
+loop();
+
+// Helper function from: http://stackoverflow.com/a/7557433/274826
+function isElementInViewport(el) {
+ 
+  var rect = el.getBoundingClientRect();
+  return (
+    (rect.top <= 0
+      && rect.bottom >= 0)
+    ||
+    (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.top <= (window.innerHeight/2 || document.documentElement.clientHeight))
+    ||
+    (rect.top >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+  );
+}
+
+
+
+        const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
+
+tl.to(".intro-text", { y: "0%", duration: 1, stagger: 0.25,delay:2 });
+tl.to(".slider", { y: "-100%", duration: 1.5, delay: 0.5 });
+tl.to(".intro", { y: "-100%", duration: 1 }, "-=1");
+
+
+
+        class TypeWriter {
+  constructor(txtElement, words, wait = 3000) {
+    this.txtElement = txtElement;
+    this.words = words;
+    this.txt = '';
+    this.wordIndex = 0;
+    this.wait = parseInt(wait, 10);
+    this.type();
+    this.isDeleting = false;
+  }
+
+  type() {
+    // Current index of word
+    const current = this.wordIndex % this.words.length;
+    // Get full text of current word
+    const fullTxt = this.words[current];
+
+    // Check if deleting
+    if(this.isDeleting) {
+      // Remove char
+      this.txt = fullTxt.substring(0, this.txt.length - 1);
+    } else {
+      // Add char
+      this.txt = fullTxt.substring(0, this.txt.length + 1);
+    }
+
+    // Insert txt into element
+    this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
+
+    // Initial Type Speed
+    let typeSpeed = 175;
+
+    if(this.isDeleting) {
+      typeSpeed /= 2;
+    }
+
+    // If word is complete
+    if(!this.isDeleting && this.txt === fullTxt) {
+      // Make pause at end
+      typeSpeed = this.wait;
+      // Set delete to true
+      this.isDeleting = true;
+    } else if(this.isDeleting && this.txt === '') {
+      this.isDeleting = false;
+      // Move to next word
+      this.wordIndex++;
+      // Pause before start typing
+      typeSpeed = 600;
+    }
+
+    setTimeout(() => this.type(), typeSpeed);
+  }
+}
+
+
+// Init On DOM Load
+document.addEventListener('DOMContentLoaded', init);
+
+// Init App
+function init() {
+  const txtElement = document.querySelector('.txt-type');
+  const words = JSON.parse(txtElement.getAttribute('data-words'));
+  const wait = txtElement.getAttribute('data-wait');
+  // Init TypeWriter
+  new TypeWriter(txtElement, words, wait);
+}
+    </script>
+</body>
+</html>

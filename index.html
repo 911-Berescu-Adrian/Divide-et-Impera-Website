@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>atestat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style> 
+        body { 
+            background-color: #141414;
+        }
+        header{
+            margin-bottom:5rem;
+          
+        }
+        span{
+  opacity:0;
+  transition:all 1s ease-in-out;
+  transform: translateY(4rem);
+  display: inline-block;
+}
+span:hover{
+    color: rgb(233, 215, 55);
+    cursor: pointer;
+}
+span.animation{
+  opacity: 1;
+  transform: translateY(0rem);
+}
+.blast {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+  display: inline-block;
+}
+
+.blast:hover {
+  color: rgb(20, 146, 129);
+  transition: color 0.4s;
+  animation-name: rubberBand;
+}
+
+@keyframes rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, .95, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+} 
+.navbarr {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+  position: fixed;
+}
+
+/* NAVIGATION */
+nav {
+  width: 25%;
+  display: flex;
+  justify-content: flex-end;
+}
+nav img{
+  width: 2rem;
+  height: auto;
+}
+nav ul {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+nav ul li {
+  display: inline-block;
+  width: 80%;
+}
+nav ul li a {
+  display: block;
+  padding-bottom: 15px;
+  text-decoration: none;
+  color: #aaa;
+  font-weight: 800;
+  margin: 0 10px;
+}
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+nav ul li a:hover {
+  color: #555;
+}
+
+
+/* stroke */
+nav.stroke ul li a,
+nav.fill ul li a {
+  position: relative;
+}
+nav.stroke ul li a:after,
+nav.fill ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #ccff00;
+  height: 4px;
+}
+nav.stroke ul li a:hover:after {
+  width: 100%;
+}
+
+nav.fill ul li a {
+  transition: all 2s;
+}
+
+nav.fill ul li a:after {
+  text-align: left;
+  content: '.';
+  margin: 0;
+  opacity: 0;
+}
+nav.fill ul li a:hover {
+  color: #fff;
+  z-index: 1;
+}
+nav.fill ul li a:hover:after {
+  z-index: -10;
+  animation: fill 1s forwards;
+  -webkit-animation: fill 1s forwards;
+  -moz-animation: fill 1s forwards;
+  opacity: 1;
+}
+.fancy{
+  padding-top: 10rem;
+}
+/* Keyframes */
+@keyframes fill {
+  0% {
+    width: 0%;
+    height: 1px;
+  }
+  50% {
+    width: 100%;
+    height: 1px;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    background: #333;
+  }
+}
+    </style>
+    <div class="container">
+        
+        
+      <section class="navbarr">
+        <a href="index.html" class="logo"><img src="images/logo.svg" alt="divide et impera"></a>
+        <nav class="stroke">
+          <ul>
+            <li><a href="index.html"><img src="images/nav-home.svg" alt=""></a></li>
+            <li><a href="implementare.html"><img src="images/nav-implementare.svg" alt=""></a></li>
+            <li><a href="algoritmi.html"><img src="images/nav-algorithm.svg" alt=""></a></li>
+            <li><a href="probleme.html"><img src="images/nav-search.svg" alt=""></a></li>
+            <li><a href="about.html"><img src="images/nav-about.svg" alt=""></a></li>
+          </ul>
+        </nav>
+      </section>
+        <header>
+             <h1 class="fancy">Divide &nbsp et &nbsp impera</h1>
+        </header>
+    
+        
+    
+        <main>
+            <img src="images/test.svg" class="statue" alt="">
+           <div class="para">
+                <div class="landing disappear">
+                    <h2>Ce este “Divide et impera” ?</h2>
+                    <br>
+                    <p>Metoda “Divide et impera” este o metodă de programare, folosită pentru a lucra cu elementele unui vector, de obicei pentru căutarea unui element sau aflarea minimului și a maximului.</p>
+                </div>
+                <div class="circle1"></div>
+            </div>
+        </main>
+        <button class="button button1" onclick="location.href='implementare.html'">Află mai multe</button>
+        
+        <div class="circle2"></div>
+        <footer>
+            <p>Copyright © 2021 Adrian Berescu</p>
+        </footer>
+    </div>
+    <script src="animation.js"></script>
+    <script>
+        function scrollappear(){
+            var landingText=document.querySelector('.disappear');
+            var landingPos=landingText.getBoundingClientRect().top;
+            var screenPos=window.innerHeight/2;
+            if(landingPos<screenPos){
+                landingText.classList.add('appear');
+            }
+        }
+        window.addEventListener('scroll',scrollappear);
+
+        
+        const text=document.querySelector(".fancy");
+        console.log(text);
+const strText=text.textContent;
+const splitText=strText.split(""); 
+text.textContent="";
+for(let i=0;i<splitText.length;i++){
+  text.innerHTML+="<span>"+splitText[i]+"</span>";
+}
+let char=0;
+let timer=setInterval(onTick,30);
+function onTick(){
+  const span=text.querySelectorAll('span')[char];
+  span.classList.add('animation');
+  char++
+  if(char===splitText.length){
+    complete();
+    return;
+  }
+}
+function complete(){
+  clearInterval(timer);
+  timer=null;
+}
+$(document).ready(function () {
+  var letters = $('h1').text();
+  var nHTML = '';
+  for (var letter of letters) {
+    nHTML += "<span class='blast'>" + letter + "</span>";
+  }
+  $('h1').html(nHTML);
+})
+    </script>
+</body>
+
+</html>

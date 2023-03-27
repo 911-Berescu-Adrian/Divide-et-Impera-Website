@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>atestat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style> 
+        body { 
+            background-color: #304373;
+        }
+        .header{
+           opacity: 0;
+           transform: translateY(2rem);
+           transition: opacity 2s ease-in-out;
+            margin-bottom: 2rem;
+        }
+        .is-visible {
+  opacity: 1;
+  transform: translateY(0rem);
+}
+        .header.is-visible{
+            transition: all 1s ease-in-out;
+            transform: translateY(0rem);
+            opacity: 1;
+        }
+        section{
+            margin-left: 50rem;
+        }
+        .navbarr {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+}
+
+/* NAVIGATION */
+nav {
+  width: 25%;
+  display: flex;
+  justify-content: flex-end;
+}
+nav img{
+  width: 2rem;
+  height: auto;
+}
+nav ul {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+nav ul li {
+  display: inline-block;
+  width: 80%;
+}
+nav ul li a {
+  display: block;
+  padding-bottom: 15px;
+  text-decoration: none;
+  color: #aaa;
+  font-weight: 800;
+  margin: 0 10px;
+}
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+nav ul li a:hover {
+  color: #555;
+}
+
+
+/* stroke */
+nav.stroke ul li a,
+nav.fill ul li a {
+  position: relative;
+}
+nav.stroke ul li a:after,
+nav.fill ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #ccff00;
+  height: 4px;
+}
+nav.stroke ul li a:hover:after {
+  width: 100%;
+}
+
+nav.fill ul li a {
+  transition: all 2s;
+}
+
+nav.fill ul li a:after {
+  text-align: left;
+  content: '.';
+  margin: 0;
+  opacity: 0;
+}
+nav.fill ul li a:hover {
+  color: #fff;
+  z-index: 1;
+}
+nav.fill ul li a:hover:after {
+  z-index: -10;
+  animation: fill 1s forwards;
+  -webkit-animation: fill 1s forwards;
+  -moz-animation: fill 1s forwards;
+  opacity: 1;
+}
+
+/* Keyframes */
+@keyframes fill {
+  0% {
+    width: 0%;
+    height: 1px;
+  }
+  50% {
+    width: 100%;
+    height: 1px;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    background: #333;
+  }
+}
+    </style>
+    <div class="container">
+        
+        
+        <div class="navbarr">
+            <a href="index.html" class="logo"><img src="images/logo.svg" alt="divide et impera"></a>
+            <nav class="stroke">
+              <ul>
+                <li><a href="index.html"><img src="images/nav-home.svg" alt=""></a></li>
+                <li><a href="implementare.html"><img src="images/nav-implementare.svg" alt=""></a></li>
+                <li><a href="algoritmi.html"><img src="images/nav-algorithm.svg" alt=""></a></li>
+                <li><a href="probleme.html"><img src="images/nav-search.svg" alt=""></a></li>
+                <li><a href="about.html"><img src="images/nav-about.svg" alt=""></a></li>
+              </ul>
+            </nav>
+        </div>
+        <header class="header show-on-scroll">
+            <h1>Implementare</h1></div>
+        </header>
+        <main>
+            
+            <div class="continut">
+                <div class="header show-on-scroll">
+                <h3>Procedeu</h3>
+                <p><span style="color: #ffffff">“Divide et impera”</span> se bazează pe descompunerea problemei în două sau mai multe subprobleme ușor de rezolvat. Astfel, soluția pentru problema inițială se obține combinând soluțiile subproblemelor.
+                </p></div>
+                <div class="header show-on-scroll">
+                <h3>Calcularea sumei elementelor unui <br> vector folosind “Divide et impera”</h3>
+                <div class="explicatie">
+                    <div class="scris">
+                      <p>1.  Vectorul inițial este împărțit în două fragmente <span style="color: #ffffff">(divide)</span>. 
+                        <br><br>       2. Fragmentele sunt la rândul lor împărțite în fragmente mai mici (subprobleme).
+                        <br><br>      3. Când fiecare fragment este compus dintr-un singur element, se adună elementele vecine și se obține soluția subproblemei.
+                        <br><br>     4. După găsirea soluțiilor tuturor subproblemelor (soluții<span style="color: #ffffff"> locale</span>), acestea se combină pentru a se obține soluția <span style="color: #ffffff">globală</span> și pentru a rezolva problema <span style="color: #ffffff">(impera)</span>.</p>
+                    </div>
+                    <img src="images/impl-schema.svg" alt="schema suma"></div>
+                </div>
+                <div class="header show-on-scroll">
+                <h3>Codul sursă</h3>
+                <div class="cod-impl">                    
+                    <img src="images/impl-cod.svg" class="code-impl" alt="code">    
+                    <img src="images/impl-illustration.svg" class="robot" alt="illustration">
+                </div>
+            </div>
+                <input type="text" value="#include <iostream> 
+            using namespace std; 
+            int v[1001];
+            int divide(int p,int u)
+            {
+                int mij,sol1,sol2;
+                if(u-p<1) return v[p];
+                else
+                {
+                    mij=p+(u-p)/2;
+                // divide
+                    sol1=divide(p,mij);
+                    sol2=divide(mij+1,u);
+                    return sol1+sol2;
+              //impera
+                }
+            }
+            int main()
+            {
+                int n;
+                cin>>n;
+                for(int i=1;i<=n;++i)
+                    cin>>v[i];
+                cout<<divide(1,n);
+                return 0;
+            }" id="myInput">
+        <button onclick="myFunction()" class="button copiaza">Copiază</button>
+        </div>
+        </main>
+        <section>
+            <button class="button button1" onclick="location.href='algoritmi.html'">Algoritmi</button>
+        </section>
+        <footer>
+            <p>Copyright © 2021 Adrian Berescu</p>
+        </footer>
+        
+        <script>
+            function myFunction() {
+              var copyText = document.getElementById("myInput");
+              copyText.select();
+              copyText.setSelectionRange(0, 99999)
+              document.execCommand("copy");
+              alert("Text copiat!");
+            }
+        // Detect request animation frame
+var scroll = window.requestAnimationFrame ||
+             // IE Fallback
+             function(callback){ window.setTimeout(callback, 1000/60)};
+var elementsToShow = document.querySelectorAll('.show-on-scroll'); 
+
+function loop() {
+
+    Array.prototype.forEach.call(elementsToShow, function(element){
+      if (isElementInViewport(element)) {
+        element.classList.add('is-visible');
+      } //else {
+        //element.classList.remove('is-visible');
+      //}
+    });
+
+    scroll(loop);
+}
+
+// Call the loop for the first time
+loop();
+
+// Helper function from: http://stackoverflow.com/a/7557433/274826
+function isElementInViewport(el) {
+ 
+  var rect = el.getBoundingClientRect();
+  return (
+    (rect.top <= 0
+      && rect.bottom >= 0)
+    ||
+    (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.top <= (window.innerHeight/2 || document.documentElement.clientHeight))
+    ||
+    (rect.top >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+  );
+}
+            </script>
+    </div>
+    
+</body>
+
+</html>
